@@ -1,0 +1,91 @@
+{
+  "tool": "NetDesk Lab",
+  "version": "1.0.0",
+  "site": "Riyadh Branch — Fault Injection Demo",
+  "generated_at": "2026-11-11T22:15:14.450219+00:00",
+  "summary": {
+    "vlans": 4,
+    "static_devices": 6,
+    "findings": 11,
+    "status": "review"
+  },
+  "findings": [
+    {
+      "code": "GATEWAY_IN_DHCP",
+      "severity": "error",
+      "entity": "VLAN 10 / Staff",
+      "evidence": "Gateway 192.168.10.1 is inside 192.168.10.1–192.168.10.199.",
+      "action": "Exclude the gateway from the modeled DHCP pool."
+    },
+    {
+      "code": "GATEWAY_INVALID",
+      "severity": "error",
+      "entity": "VLAN 20 / Printers",
+      "evidence": "192.168.21.1 is not a usable host in 192.168.20.0/24.",
+      "action": "Assign an unused host in the VLAN subnet as its gateway."
+    },
+    {
+      "code": "SUBNET_OVERLAP",
+      "severity": "error",
+      "entity": "VLAN 30 / Cameras",
+      "evidence": "192.168.30.0/24 overlaps VLAN 40 (192.168.30.128/25).",
+      "action": "Allocate distinct subnets within this routing domain."
+    },
+    {
+      "code": "DHCP_RANGE_INVALID",
+      "severity": "error",
+      "entity": "VLAN 40 / Guest",
+      "evidence": "Pool 192.168.30.220–192.168.30.180 is invalid for 192.168.30.128/25.",
+      "action": "Use ordered usable host addresses inside the subnet."
+    },
+    {
+      "code": "STATIC_IN_DHCP",
+      "severity": "error",
+      "entity": "Staff-PC-01",
+      "evidence": "Static IP 192.168.10.10 is inside VLAN 10's dynamic pool.",
+      "action": "Move the static address outside the pool or model a pool that excludes it."
+    },
+    {
+      "code": "DUPLICATE_IP",
+      "severity": "error",
+      "entity": "Staff-PC-02",
+      "evidence": "192.168.10.10 is also assigned to Staff-PC-01 in VLAN 10.",
+      "action": "Assign distinct addresses and verify the DHCP lease/reservation records."
+    },
+    {
+      "code": "STATIC_IN_DHCP",
+      "severity": "error",
+      "entity": "Staff-PC-02",
+      "evidence": "Static IP 192.168.10.10 is inside VLAN 10's dynamic pool.",
+      "action": "Move the static address outside the pool or model a pool that excludes it."
+    },
+    {
+      "code": "DEVICE_IP_INVALID",
+      "severity": "error",
+      "entity": "Printer-01",
+      "evidence": "192.168.21.20 is not a usable host in VLAN 20 (192.168.20.0/24).",
+      "action": "Assign an unused host address in the correct VLAN subnet."
+    },
+    {
+      "code": "DEVICE_IP_INVALID",
+      "severity": "error",
+      "entity": "Printer-02",
+      "evidence": "192.168.20.255 is not a usable host in VLAN 20 (192.168.20.0/24).",
+      "action": "Assign an unused host address in the correct VLAN subnet."
+    },
+    {
+      "code": "DEVICE_USES_GATEWAY",
+      "severity": "error",
+      "entity": "Camera-01",
+      "evidence": "192.168.30.1 equals the gateway for VLAN 30.",
+      "action": "Give this endpoint a distinct static IP address."
+    },
+    {
+      "code": "UNKNOWN_VLAN",
+      "severity": "error",
+      "entity": "Camera-02",
+      "evidence": "VLAN 99 is not defined.",
+      "action": "Correct the device VLAN or define the missing VLAN."
+    }
+  ]
+}

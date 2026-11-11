@@ -1,0 +1,16 @@
+{
+  "site": "Riyadh Branch — Training Lab",
+  "vlans": [
+    {"id": 10, "name": "Staff", "subnet": "192.168.10.0/24", "gateway": "192.168.10.1", "dhcp": {"start": "192.168.10.100", "end": "192.168.10.199"}},
+    {"id": 20, "name": "Printers", "subnet": "192.168.20.0/24", "gateway": "192.168.20.1"},
+    {"id": 30, "name": "Cameras", "subnet": "192.168.30.0/24", "gateway": "192.168.30.1"}
+  ],
+  "devices": [
+    {"name": "Staff-PC-01", "vlan_id": 10, "ip": "192.168.10.10"},
+    {"name": "Staff-PC-02", "vlan_id": 10, "ip": "192.168.10.11"},
+    {"name": "Printer-01", "vlan_id": 20, "ip": "192.168.20.10"},
+    {"name": "Printer-02", "vlan_id": 20, "ip": "192.168.20.11"},
+    {"name": "Camera-01", "vlan_id": 30, "ip": "192.168.30.10"},
+    {"name": "Camera-02", "vlan_id": 30, "ip": "192.168.30.11"}
+  ]
+}
